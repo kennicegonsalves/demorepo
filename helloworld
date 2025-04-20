@@ -1,0 +1,1997 @@
+EXPERIMENT 1
+
+
+1. Execute the following programming constructs in Dart: 
+Statements and variables, data types and return types, decision making and loops, arrays/ lists, functions, classes and objects, inheritance. 
+
+
+Code 1: 
+void main() {
+  //Statements and variables
+  int num1 = 10;
+  double num2 = 20.5;
+  String name = "Kennice";
+  bool isTrue = true;
+
+
+  print("Statements and Variables:");
+  print("Integer: $num1");
+  print("Double: $num2");
+  print("String: $name");
+  print("Boolean: $isTrue");
+  print("");
+
+
+  //Data types and return types
+  print("Data types and Return types:");
+  print(greetUser(name));
+  print("");
+
+
+  //Decision making
+  print("Decision Making:");
+  if (num1 > num2) {
+    print("num1 is greater than num2");
+  } else if (num2 > num1) {
+    print("num2 is greater than num1");
+  } else {
+    print("num1 is equal to num2");
+  }
+
+
+  //Loops
+  print("\nLoops:");
+  for (int i = 1; i <= 5; i++) {
+    print("for loop $i");
+  }
+
+
+  //Arrays and Lists
+  print("\nArrays and Lists:");
+  List fruits = ['Apple', 'Banana', 'Cherry', 'Orange'];
+  for (var fruit in fruits) {
+    print(fruit);
+  }
+
+
+  //Functions
+  print("\nFunctions:");
+  print("Sum: ${add(5, 7)}");
+}
+
+
+String greetUser(String name) {
+  return "Hello, $name!";
+}
+
+
+int add(int a, int b) {
+  return a + b;
+}
+
+
+Code 2: 
+
+
+//Classes
+class Animal {
+  String name;
+  Animal(this.name);
+
+
+  void speak() {
+    print("$name makes a sound");
+  }
+}
+
+
+//Inheritance
+class Dog extends Animal {
+  Dog(String name) : super(name);
+
+
+  @override
+  void speak() {
+    print("$name barks");
+  }
+}
+
+
+void main() {
+  print("Classes, Objects and Inheritance:");
+
+
+  //Objects
+  Animal ani = Animal("Giraffe");
+  ani.speak();
+
+
+  Dog doggy = Dog("Tom");
+  doggy.speak();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+2. Write and execute a basic gaming application using Dart programming language. 
+
+
+import 'dart:io';
+import 'dart:math';
+
+
+void main() {
+  var random = Random();
+  int numberToGuess = random.nextInt(10) + 1; // Random number between 1 and 10
+  print("Guess a number between 1 and 10:");
+
+
+  int? guess = int.parse(stdin.readLineSync()!);
+
+
+  if (guess == numberToGuess) {
+    print("Correct! You guessed the number!");
+  } else {
+    print("Wrong! The number was $numberToGuess.");
+  }
+}
+
+
+3. Execution of ‘Hello world’ program in Flutter.
+
+
+Modify existing Flutter code
+
+
+EXPERIMENT 2
+
+
+1. Design UI for mobile app using the following widgets. 
+MaterialApp, Scaffold, AppBar, Text, Center, FloatingActionButton, TextStyle.
+
+
+import 'package:flutter/material.dart';
+
+
+void main() {
+  runApp(const MyApp());
+}
+
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Kennice App', //Changed
+      theme: ThemeData(
+        colorScheme:
+            ColorScheme.fromSeed(seedColor: Colors.pinkAccent), //Changed
+        useMaterial3: true,
+      ),
+      home: const MyHomePage(title: 'Kennice Laugh Tracker'), //Changed
+    );
+  }
+}
+
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
+  final String title;
+
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+
+class _MyHomePageState extends State<MyHomePage> {
+  int _laughs = 0; //Changed
+
+
+  void _addlaugh() {
+    //Changed
+    setState(() {
+      _laughs++; //Changed
+    });
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.pinkAccent, //Changed
+        title: Text(widget.title),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text(
+              'How many times did you Laugh today?', //Changed
+            ),
+            Text(
+              '$_laughs', //Changed
+              style: TextStyle(
+                  //Changed
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.pink),
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _addlaugh, //Changed
+        tooltip: 'Increment',
+        child: const Icon(Icons.emoji_emotions), //Changed
+      ),
+    );
+ }
+}
+
+
+2. Modify the app UI to include two more widgets and show the output. 
+
+
+import 'package:flutter/material.dart';
+
+
+void main() {
+  runApp(const MyApp());
+}
+
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Kennice App', //Changed
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.pink), //Changed
+        useMaterial3: true,
+      ),
+      home: const MyHomePage(title: 'Kennice Laugh Tracker'), //Changed
+    );
+  }
+}
+
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
+  final String title;
+
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+
+class _MyHomePageState extends State<MyHomePage> {
+  int _laughs = 0; //Changed
+
+
+  void _addLaugh() {
+    //Changed
+    setState(() {
+      _laughs++; //Changed
+    });
+  }
+
+
+  void _resetLaughs() {
+    setState(() {
+      _laughs = 0;
+    });
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.pinkAccent, //Changed
+        title: Text(widget.title),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Icon(
+              Icons.sentiment_very_satisfied,
+              size: 60,
+              color: Colors.pink,
+            ),
+            const Text(
+              'How many times did you Laugh today?', //Changed
+            ),
+            Text(
+              '$_laughs', //Changed
+              style: TextStyle(
+                  //Changed
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.pink),
+            ),
+            const SizedBox(height: 30),
+            ElevatedButton(
+              child: const Text('Reset'),
+              onPressed: _resetLaughs,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color.fromARGB(255, 255, 222, 222),
+              ),
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _addLaugh, //Changed
+        tooltip: 'Increment',
+        child: const Icon(Icons.emoji_emotions), //Changed
+      ),
+    );
+  }
+}
+
+
+
+
+
+
+EXPERIMENT 3
+
+
+1. Create a form for the mobile app having two text fields: person’s name and  contact number. The form should be able to accept the input when the user submits the form. Also validate the form for null values and display appropriate  messages. 
+
+
+import 'package:flutter/material.dart';
+
+
+void main() {
+  runApp(MaterialApp(
+    home: MyFormApp(),
+  ));
+}
+
+
+class MyFormApp extends StatefulWidget {
+  @override
+  State<MyFormApp> createState() => _MyFormAppState();
+}
+
+
+class _MyFormAppState extends State<MyFormApp> {
+  final nameController = TextEditingController();
+  final contactController = TextEditingController();
+
+
+  String message = '';
+
+
+  void submitForm() {
+    String name = nameController.text;
+    String contact = contactController.text;
+
+
+    if (name.isEmpty || contact.isEmpty) {
+      setState(() {
+        message = 'Please fill all fields.';
+      });
+    } else {
+      setState(() {
+        message = 'Form submitted!\nName: $name\nContact: $contact';
+      });
+    }
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Simple Form')),
+      body: Padding(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          children: [
+            TextField(
+              controller: nameController,
+              decoration: InputDecoration(labelText: 'Name'),
+            ),
+            TextField(
+              controller: contactController,
+              decoration: InputDecoration(labelText: 'Contact Number'),
+              keyboardType: TextInputType.phone,
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: submitForm,
+              child: Text('Submit'),
+            ),
+            SizedBox(height: 20),
+            Text(message),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+2. Add one more text field along with validation, and show the output. Also validate  the ‘phone number’ field to ensure that only numeric value is accepted in the  ‘phone number’.
+
+
+import 'package:flutter/material.dart';
+
+
+void main() {
+  runApp(MaterialApp(
+    home: MyFormApp(),
+  ));
+}
+
+
+class MyFormApp extends StatefulWidget {
+  @override
+  State<MyFormApp> createState() => _MyFormAppState();
+}
+
+
+class _MyFormAppState extends State<MyFormApp> {
+  final nameController = TextEditingController();
+  final contactController = TextEditingController();
+  final emailController = TextEditingController();
+
+
+  String message = '';
+
+
+  void submitForm() {
+    String name = nameController.text;
+    String contact = contactController.text;
+    String email = emailController.text;
+
+
+    if (name.isEmpty || contact.isEmpty || email.isEmpty) {
+      setState(() {
+        message = 'Please fill all fields.';
+      });
+    } else if (!RegExp(r'^[0-9]+$').hasMatch(contact)) {
+      setState(() {
+        message = 'Contact number must be numeric.';
+      });
+    } else {
+      setState(() {
+        message =
+            'Form submitted!\nName: $name\nContact: $contact\nEmail: $email';
+      });
+    }
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Simple Form')),
+      body: Padding(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          children: [
+            TextField(
+              controller: nameController,
+              decoration: InputDecoration(labelText: 'Name'),
+            ),
+            TextField(
+              controller: contactController,
+              decoration: InputDecoration(labelText: 'Contact Number'),
+              keyboardType: TextInputType.phone,
+            ),
+            TextField(
+              controller: emailController,
+              decoration: InputDecoration(labelText: 'Email'),
+              keyboardType: TextInputType.emailAddress,
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: submitForm,
+              child: Text('Submit'),
+            ),
+            SizedBox(height: 20),
+            Text(message),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+EXPERIMENT 4
+
+
+1. Design the layout of the mobile app by using the following widgets:
+Material App, Scaffold, Container, Row, Column, ListView, GridView, Table.
+
+
+import 'package:flutter/material.dart';
+
+
+void main() {
+  runApp(MaterialApp(
+    home: MyApp(),
+  ));
+}
+
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Kennice App')),
+      body: ListView(
+        children: [
+          Container(
+            padding: EdgeInsets.all(10),
+            color: Colors.lightBlueAccent,
+            child: Column(
+              children: [
+                Text('This is inside a Column'),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('Row Item 1'),
+                    SizedBox(width: 10),
+                    Text('Row Item 2'),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: 20),
+          SizedBox(
+            height: 100,
+            child: GridView.count(
+              crossAxisCount: 2,
+              children: [
+                Container(
+                  color: Colors.pink[100],
+                  child: Center(child: Text('Grid 1')),
+                ),
+                Container(
+                  color: Colors.pink[200],
+                  child: Center(child: Text('Grid 2')),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: 20),
+          Container(
+            padding: EdgeInsets.all(10),
+            color: Colors.green[100],
+            child: Table(
+              border: TableBorder.all(),
+              children: [
+                TableRow(children: [
+                  Padding(
+                    padding: EdgeInsets.all(8),
+                    child: Text('Row 1 Col 1'),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(8),
+                    child: Text('Row 1 Col 2'),
+                  ),
+                ]),
+                TableRow(children: [
+                  Padding(
+                    padding: EdgeInsets.all(8),
+                    child: Text('Row 2 Col 1'),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(8),
+                    child: Text('Row 2 Col 2'),
+                  ),
+                ]),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+EXPERIMENT 5
+
+
+1. Design an app using one gesture and one navigation method.  
+
+
+import 'package:flutter/material.dart';
+
+
+void main() {
+  runApp(MyApp());
+}
+
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: HomeScreen(),
+    );
+  }
+}
+
+
+class HomeScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Home Screen')),
+      body: Center(
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+            backgroundColor: Colors.blue,
+          ),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => SecondScreen()),
+            );
+          },
+          child: Text(
+            'Go to Second Screen',
+            style: TextStyle(fontSize: 18, color: Colors.white),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+class SecondScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Second Screen')),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.arrow_back, size: 50, color: Colors.blue),
+            SizedBox(height: 10),
+            Text(
+              'Use the back arrow to return',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+EXPERIMENT 6
+
+
+1. Create the form of experiment 3.
+
+
+2. Login to Firebase console
+Add Project > Enter name > Disable Analytics> Create Project
+
+
+3. Project Dashboard > Add App > Android > Package name > Register app
+For package name: 
+Go to android/app/build.gradle > look for applicationId 
+
+
+4. Download google-services.json > move to android/app
+
+
+5. Adding dependencies:
+1. In android/build.gradle
+plugins {
+    // Add this Firebase Google Services plugin line
+    id 'com.google.gms.google-services' version '4.4.2' apply false
+}
+
+
+2. In android/app/build.gradle
+// in plugins
+plugins {
+    id 'com.android.application'
+    id 'com.google.gms.google-services' 
+}
+
+
+// in dependencies
+// Firebase BoM (Bill of Materials)
+implementation platform('com.google.firebase:firebase-bom:33.12.0')
+
+
+// Firebase product (example: Firestore)
+implementation 'com.google.firebase:firebase-firestore'
+
+
+6.  Update main.dart with this:
+
+
+import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MaterialApp(
+    home: MyApp(),
+  ));
+}
+
+
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
+
+  @override
+  State<MyApp> createState() => _MyFormAppState();
+}
+
+
+class _MyFormAppState extends State<MyApp> {
+  final nameController = TextEditingController();
+  final contactController = TextEditingController();
+
+
+  String message = '';
+
+
+  void submitForm() async {
+    String name = nameController.text.trim();
+    String contact = contactController.text.trim();
+
+
+    if (name.isEmpty || contact.isEmpty) {
+      setState(() {
+        message = 'Please fill all fields.';
+      });
+    } else {
+      try {
+        await FirebaseFirestore.instance.collection('users').add({
+          'name': name,
+          'contact': contact,
+          'timestamp': FieldValue.serverTimestamp(),
+        });
+
+
+        setState(() {
+          message = 'Form submitted to Firebase!\nName: $name\nContact: $contact';
+        });
+
+
+        // Optional: clear text fields
+        nameController.clear();
+        contactController.clear();
+      } catch (e) {
+        setState(() {
+          message = 'Error: $e';
+        });
+      }
+    }
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Simple Form')),
+      body: Padding(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          children: [
+            TextField(
+              controller: nameController,
+              decoration: InputDecoration(labelText: 'Name'),
+            ),
+            TextField(
+              controller: contactController,
+              decoration: InputDecoration(labelText: 'Contact Number'),
+              keyboardType: TextInputType.phone,
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: submitForm,
+              child: Text('Submit'),
+            ),
+            SizedBox(height: 20),
+            Text(message),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+7. Update pubspec.yaml file
+under dependencies add:
+firebase_core: ^1.10.6
+cloud_firestore: ^3.1.5
+
+
+8. In Firebase, go to Project > left sidebar: Build > Firestore Database
+Create Database > location: asia-south1 > Test mode
+
+
+9. Submit form and check output in collection named users
+
+
+
+
+EXPERIMENT 7
+
+
+Make the same Hello World app and use Jeslyn’s phone to deploy your app 
+
+
+Steps:
+1. Enable Developer mode on your Android phone:
+
+
+Go to Settings> About phone> Software information> Build number (tap 7 times)
+Go back to Settings> Developer options> enable Wireless debugging
+
+
+2. Ensure that Pc and Phone are connected to the same WiFi
+
+
+3. Tap on Wireless debugging> Pair device
+
+
+4. Run the following commands on PC:
+1. adb pair
+2. adb connect
+3. adb devices
+4. flutter run (select your mobile device number)
+
+
+EXPERIMENT 8
+
+
+Copy Paste some of your website’s codes from your GitHub repository
+
+
+Website is hosted here: https://tanmaygupta1008.github.io/vite-host/
+Open the website on the pc + your phone/ emulator and paste it’s screenshots
+
+
+EXPERIMENT 9
+
+
+1. In public folder: sw.js
+
+
+self.addEventListener('install', (event) => {
+console.log('Service Worker installing...');
+self.skipWaiting();
+});
+self.addEventListener('activate', (event) => {
+console.log('Service Worker activating...');
+});
+
+
+2. In main.jsx
+
+
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import Sw from './Sw';
+import "./styles/index.css";
+import { BrowserRouter } from "react-router-dom";
+import { registerServiceWorker } from "./components/ServiceworkerRegistration.jsx";
+
+
+// Register Service Worker
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("/sw.js")
+      .then((registration) => {
+        console.log("Service Worker registered with scope:", registration.scope);
+      })
+      .catch((error) => {
+        console.log("Service Worker registration failed:", error);
+      });
+  });
+}
+
+
+// Render the React App
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>
+);
+registerServiceWorker();
+
+
+3. In src/components: serviceWorkerRegistration.jsx
+
+
+// src/components/ServiceworkerRegistration.jsx
+
+
+export function registerServiceWorker() {
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+      .register('/sw.js')
+      .then((registration) => {
+        console.log('Service Worker registered with scope:', registration.scope);
+      })
+      .catch((error) => {
+        console.error('Service Worker registration failed:', error);
+      });
+  } else {
+    console.warn('Service Worker is not supported in this browser.');
+  }
+}
+
+
+4. In src below main.jsx: Sw.jsx
+
+
+// src/Sw.jsx
+
+
+import { useEffect } from 'react';
+
+
+export default function Sw() {
+  useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.ready.then((registration) => {
+        console.log('Service Worker is ready:', registration);
+
+
+        // Example: Listen for updates
+        registration.addEventListener('updatefound', () => {
+          const newWorker = registration.installing;
+          if (newWorker) {
+            console.log('New service worker found:', newWorker);
+
+
+            newWorker.addEventListener('statechange', () => {
+              if (newWorker.state === 'installed') {
+                if (navigator.serviceWorker.controller) {
+                  alert('New version available! Refresh the page.');
+                } else {
+                  console.log('Service Worker installed for the first time.');
+                }
+              }
+            });
+          }
+        });
+      });
+    }
+  }, []);
+
+
+  return null; // This component doesn’t render anything
+}
+
+
+
+
+
+
+EXPERIMENT 10
+
+
+Step 1: Create a new repository
+
+
+Step 2: Clone your website into a folder 
+             Go to the folder, open git bash and type the following commands-
+
+
+1. git init
+2. git remote -v
+git remote set-url origin (your new repo link)
+3. git add .
+git commit -m “initial commit”
+git push origin master
+
+
+Step 3: Make scripts folder and add deploy.js file in it
+
+
+1. mkdir scripts
+2. cd scripts
+3. echo . >deploy.js
+
+
+Step 4: npm install and files updation
+
+
+1. run in git bash: npm install gh-pages –save-dev
+2. update package. json (in devDependencies):
+1. “homepage”: “https://your-username.github.io/your-repo-name/”,
+2. “predeploy”: “npm run build”,
+3. “deploy”: “gh-pages -d dist”
+
+
+3. update vite.config.js (in defineConfig):
+base: ‘/your-repo-name/’,
+
+
+Step 5: npm run build , npm rund deploy
+
+
+Step 6: Go to your new Repository > Settings > Pages > click on the Link
+
+
+site might not be visible but it’s okay hosting is done
+
+
+MOCK QUESTIONS
+
+
+1. Write a flutter program to create a display page using scaffold widget showing an image having restaurant name and a floating button. On click of the floating button a new menu page should open to display the food menu as shown below:
+
+
+import 'package:flutter/material.dart';
+
+
+void main() => runApp(MyApp());
+
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Restaurant App',
+      theme: ThemeData(primarySwatch: Colors.teal),
+      home: DisplayPage(),
+    );
+  }
+}
+
+
+class DisplayPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Restaurant')),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: 300,
+              height: 300,
+              color: Colors.grey[300],
+              child: Center(child: Text('Restaurant Image')),
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => MenuPage()),
+          );
+        },
+        child: Icon(Icons.add),
+      ),
+    );
+  }
+}
+
+
+class MenuPage extends StatelessWidget {
+  final List<Map<String, String>> menuItems = [
+    {'name': 'Pizza', 'price': 'Rs. 200'},
+    {'name': 'Burger', 'price': 'Rs. 150'},
+    {'name': 'Pasta', 'price': 'Rs. 180'},
+  ];
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Food Menu')),
+      body: ListView.builder(
+        itemCount: menuItems.length,
+        itemBuilder: (context, index) {
+          return Card(
+            margin: EdgeInsets.all(10),
+            child: Row(
+              children: [
+                Container(
+                  width: 100,
+                  height: 100,
+                  color: Colors.grey[300],
+                  child: Center(child: Text('Food Image')),
+                ),
+                SizedBox(width: 10),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(menuItems[index]['name']!, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                    Text(menuItems[index]['price']!, style: TextStyle(fontSize: 16)),
+                  ],
+                ),
+              ],
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+
+2. Write a flutter program to create a display page using scaffold widget showing an image having Book Store name and a floating button. On click of the floating button a new menu page should open to display the details of at least 7 books as shown below:
+
+
+import 'package:flutter/material.dart';
+
+
+void main() {
+  runApp(BookStoreApp());
+}
+
+
+class BookStoreApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Book Store',
+      home: DisplayPage(),
+    );
+  }
+}
+
+
+class DisplayPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Book Store')),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.network(
+              'https://via.placeholder.com/200x150?text=Book+Store+Image',
+              height: 200,
+              width: 200,
+              fit: BoxFit.cover,
+            ),
+            SizedBox(height: 20),
+            Text(
+              'Welcome to the Book Store!',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => MenuPage()),
+          );
+        },
+      ),
+    );
+  }
+}
+
+
+class MenuPage extends StatelessWidget {
+  final List<Map<String, String>> books = [
+    {
+      'image': 'https://via.placeholder.com/80',
+      'name': 'Book 1',
+      'price': '\$10',
+    },
+    {
+      'image': 'https://via.placeholder.com/80',
+      'name': 'Book 2',
+      'price': '\$12',
+    },
+    {
+      'image': 'https://via.placeholder.com/80',
+      'name': 'Book 3',
+      'price': '\$15',
+    },
+    {
+      'image': 'https://via.placeholder.com/80',
+      'name': 'Book 4',
+      'price': '\$8',
+    },
+    {
+      'image': 'https://via.placeholder.com/80',
+      'name': 'Book 5',
+      'price': '\$20',
+    },
+    {
+      'image': 'https://via.placeholder.com/80',
+      'name': 'Book 6',
+      'price': '\$18',
+    },
+    {
+      'image': 'https://via.placeholder.com/80',
+      'name': 'Book 7',
+      'price': '\$22',
+    },
+  ];
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Books Menu')),
+      body: ListView.builder(
+        itemCount: books.length,
+        itemBuilder: (context, index) {
+          final book = books[index];
+          return Card(
+            margin: EdgeInsets.all(8),
+            child: ListTile(
+              leading: Image.network(book['image']!),
+              title: Text(book['name']!),
+              subtitle: Text(book['price']!),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+
+3. Write a flutter program to create a display page using scaffold widget showing an image having Mobile product store name and a floating button. On click of the floating button a new menu page should open to display the details of atleast 7 different mobile phones as shown below:
+
+
+Same as above
+
+
+4. Design a calculator app using flutter as shown below:
+
+
+import 'package:flutter/material.dart';
+import 'package:math_expressions/math_expressions.dart';
+
+
+void main() => runApp(CalculatorApp());
+
+
+class CalculatorApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Calculator',
+      home: CalculatorHome(),
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
+
+
+class CalculatorHome extends StatefulWidget {
+  @override
+  _CalculatorHomeState createState() => _CalculatorHomeState();
+}
+
+
+class _CalculatorHomeState extends State<CalculatorHome> {
+  String expression = '';
+
+
+  void buttonPressed(String buttonText) {
+    setState(() {
+      if (buttonText == 'C') {
+        expression = '';
+      } else if (buttonText == '=') {
+        try {
+          Parser p = Parser();
+          Expression exp = p.parse(expression);
+          ContextModel cm = ContextModel();
+          double eval = exp.evaluate(EvaluationType.REAL, cm);
+          expression = eval.toString();
+        } catch (e) {
+          expression = "Error";
+        }
+      } else {
+        expression += buttonText;
+      }
+    });
+  }
+
+
+  Widget buildButton(String text) {
+    return Expanded(
+      child: OutlinedButton(
+        onPressed: () => buttonPressed(text),
+        child: Text(
+          text,
+          style: TextStyle(fontSize: 24),
+        ),
+      ),
+    );
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Calculator'),
+        centerTitle: true,
+      ),
+      body: Column(
+        children: <Widget>[
+          Expanded(
+            child: Container(
+              alignment: Alignment.bottomRight,
+              padding: EdgeInsets.all(24),
+              child: Text(
+                expression,
+                style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
+          Column(
+            children: [
+              Row(children: [buildButton('C'), buildButton('='), buildButton('-'), buildButton('+')]),
+              Row(children: [buildButton('*'), buildButton('/'), buildButton('0'), buildButton('1')]),
+              Row(children: [buildButton('2'), buildButton('3'), buildButton('4'), buildButton('5')]),
+              Row(children: [buildButton('6'), buildButton('7'), buildButton('8'), buildButton('9')]),
+            ],
+          )
+        ],
+      ),
+    );
+  }
+}
+
+
+5. Write a flutter program to design registration form for restaurant table booking system. On successful registration, the customer’s details must be reflected in the firebase database. 
+
+
+import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(); // Initialize Firebase
+  runApp(RestaurantApp());
+}
+
+
+class RestaurantApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Restaurant Table Booking',
+      theme: ThemeData(primarySwatch: Colors.green),
+      home: RegistrationForm(),
+    );
+  }
+}
+
+
+class RegistrationForm extends StatefulWidget {
+  @override
+  _RegistrationFormState createState() => _RegistrationFormState();
+}
+
+
+class _RegistrationFormState extends State<RegistrationForm> {
+  final _formKey = GlobalKey<FormState>();
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController guestsController = TextEditingController();
+  DateTime? selectedDate;
+  TimeOfDay? selectedTime;
+
+
+  Future<void> _submitForm() async {
+    if (_formKey.currentState!.validate() &&
+        selectedDate != null &&
+        selectedTime != null) {
+      final bookingDateTime = DateTime(
+        selectedDate!.year,
+        selectedDate!.month,
+        selectedDate!.day,
+        selectedTime!.hour,
+        selectedTime!.minute,
+      );
+
+
+      await FirebaseFirestore.instance.collection('bookings').add({
+        'name': nameController.text,
+        'phone': phoneController.text,
+        'email': emailController.text,
+        'guests': int.parse(guestsController.text),
+        'bookingDateTime': bookingDateTime.toString(),
+        'timestamp': FieldValue.serverTimestamp(),
+      });
+
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Booking Successful!')),
+      );
+
+
+      _formKey.currentState!.reset();
+      setState(() {
+        selectedDate = null;
+        selectedTime = null;
+      });
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Please complete all fields')),
+      );
+    }
+  }
+
+
+  Future<void> _pickDate() async {
+    final picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime.now(),
+      lastDate: DateTime.now().add(Duration(days: 60)),
+    );
+    if (picked != null) {
+      setState(() {
+        selectedDate = picked;
+      });
+    }
+  }
+
+
+  Future<void> _pickTime() async {
+    final picked = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.now(),
+    );
+    if (picked != null) {
+      setState(() {
+        selectedTime = picked;
+      });
+    }
+  }
+
+
+  String _formatDateTime() {
+    if (selectedDate == null || selectedTime == null) return "Select Date & Time";
+    final dt = DateTime(
+      selectedDate!.year,
+      selectedDate!.month,
+      selectedDate!.day,
+      selectedTime!.hour,
+      selectedTime!.minute,
+    );
+    return "${dt.day}/${dt.month}/${dt.year} ${selectedTime!.format(context)}";
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Table Booking Form')),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Form(
+          key: _formKey,
+          child: ListView(
+            children: [
+              TextFormField(
+                controller: nameController,
+                decoration: InputDecoration(labelText: 'Full Name'),
+                validator: (value) =>
+                    value!.isEmpty ? 'Please enter your name' : null,
+              ),
+              TextFormField(
+                controller: phoneController,
+                keyboardType: TextInputType.phone,
+                decoration: InputDecoration(labelText: 'Phone Number'),
+                validator: (value) =>
+                    value!.isEmpty ? 'Please enter phone number' : null,
+              ),
+              TextFormField(
+                controller: emailController,
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(labelText: 'Email'),
+                validator: (value) =>
+                    value!.isEmpty ? 'Please enter email' : null,
+              ),
+              TextFormField(
+                controller: guestsController,
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(labelText: 'Number of Guests'),
+                validator: (value) =>
+                    value!.isEmpty ? 'Please enter number of guests' : null,
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: _pickDate,
+                child: Text(selectedDate == null
+                    ? "Pick Booking Date"
+                    : "Date: ${selectedDate!.day}/${selectedDate!.month}/${selectedDate!.year}"),
+              ),
+              ElevatedButton(
+                onPressed: _pickTime,
+                child: Text(selectedTime == null
+                    ? "Pick Booking Time"
+                    : "Time: ${selectedTime!.format(context)}"),
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: _submitForm,
+                child: Text('Submit Booking'),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+FOLLOW EXP 6 STEPS
+
+
+6. Design a responsive UI for college website. The home page must have college name and logo. It must have tabs like About Us, Academics, Library, Placements and Admissions. The home page must also have an announcement section.
+
+
+import 'package:flutter/material.dart';
+
+
+void main() {
+  runApp(CollegeApp());
+}
+
+
+class CollegeApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'XYZ College',
+      theme: ThemeData(
+        primarySwatch: Colors.indigo,
+      ),
+      home: HomePage(),
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
+
+
+class HomePage extends StatelessWidget {
+  final List<String> announcements = [
+    "Semester exams begin from May 2nd.",
+    "Admissions open for 2025 batch.",
+    "Placement drive on April 28th.",
+    "Library will remain closed on Sunday."
+  ];
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Row(
+          children: [
+            Image.asset('assets/logo.png', height: 40), // Add your logo in assets folder
+            SizedBox(width: 10),
+            Text('XYZ College of Engineering'),
+          ],
+        ),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(color: Colors.indigo),
+              child: Text('Menu', style: TextStyle(color: Colors.white, fontSize: 24)),
+            ),
+            ListTile(title: Text("About Us")),
+            ListTile(title: Text("Academics")),
+            ListTile(title: Text("Library")),
+            ListTile(title: Text("Placements")),
+            ListTile(title: Text("Admissions")),
+          ],
+        ),
+      ),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return Row(
+            children: [
+              if (constraints.maxWidth > 600)
+                NavigationRail(
+                  selectedIndex: 0,
+                  destinations: [
+                    NavigationRailDestination(icon: Icon(Icons.info), label: Text("About Us")),
+                    NavigationRailDestination(icon: Icon(Icons.school), label: Text("Academics")),
+                    NavigationRailDestination(icon: Icon(Icons.library_books), label: Text("Library")),
+                    NavigationRailDestination(icon: Icon(Icons.work), label: Text("Placements")),
+                    NavigationRailDestination(icon: Icon(Icons.app_registration), label: Text("Admissions")),
+                  ],
+                  labelType: NavigationRailLabelType.all,
+                ),
+              Expanded(
+                child: SingleChildScrollView(
+                  padding: EdgeInsets.all(16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("📢 Announcements", style: Theme.of(context).textTheme.headline6),
+                      SizedBox(height: 10),
+                      ...announcements.map((announcement) => Card(
+                        child: ListTile(
+                          leading: Icon(Icons.announcement),
+                          title: Text(announcement),
+                        ),
+                      )),
+                    ],
+                  ),
+                ),
+              )
+            ],
+          );
+        },
+      ),
+    );
+  }
+}
+7. Create a web manifest file for PWA.
+
+
+1. Create manifest.json in public/
+
+
+{
+  "name": "E-Commerce PWA",
+  "short_name": "ShopEZ",
+  "description": "A Progressive Web App for smooth online shopping.",
+  "start_url": "/vite-host/",   
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#007bff",
+  "icons": [
+    {
+      "src": "assets/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "assets/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
+
+
+2. Inside public/index.html
+<link rel="manifest" href="/manifest.json" />
+
+
+3. Place these icons in public/assets/:
+icon-192x192.png
+icon-512x512.png
+4. Go to your site
+Open DevTools → Application tab
+Check Manifest section
+You should see your app name, colors, and icons
+It should say: Installable: Yes
+8. Design a registration form and login form for clinical ERP system. Write 2 test cases for the same.
+
+
+import 'package:flutter/material.dart';
+
+
+void main() {
+  runApp(const MyApp());
+}
+
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      home: AuthScreen(),
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
+
+
+class AuthScreen extends StatefulWidget {
+  const AuthScreen({super.key});
+
+
+  @override
+  State<AuthScreen> createState() => _AuthScreenState();
+}
+
+
+class _AuthScreenState extends State<AuthScreen> {
+  bool showLogin = true;
+
+
+  void toggleForm() {
+    setState(() {
+      showLogin = !showLogin;
+    });
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return showLogin
+        ? LoginForm(onToggle: toggleForm)
+        : RegistrationForm(onToggle: toggleForm);
+  }
+}
+
+
+class RegistrationForm extends StatefulWidget {
+  final VoidCallback onToggle;
+
+
+  const RegistrationForm({super.key, required this.onToggle});
+
+
+  @override
+  State<RegistrationForm> createState() => _RegistrationFormState();
+}
+
+
+class _RegistrationFormState extends State<RegistrationForm> {
+  final _formKey = GlobalKey<FormState>();
+  final _nameController = TextEditingController();
+  final _phoneController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+
+  void _register() {
+    if (_formKey.currentState!.validate()) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Registration Successful')),
+      );
+    }
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Register'),
+        actions: [
+          TextButton(
+            onPressed: widget.onToggle,
+            child: const Text('Login', style: TextStyle(color: Colors.white)),
+          )
+        ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Form(
+          key: _formKey,
+          child: ListView(
+            children: [
+              TextFormField(
+                key: const Key('nameField'),
+                controller: _nameController,
+                decoration: const InputDecoration(labelText: 'Full Name'),
+                validator: (value) =>
+                    value!.isEmpty ? 'Enter full name' : null,
+              ),
+              TextFormField(
+                key: const Key('phoneField'),
+                controller: _phoneController,
+                decoration: const InputDecoration(labelText: 'Phone Number'),
+                validator: (value) =>
+                    value!.isEmpty ? 'Enter phone number' : null,
+              ),
+              TextFormField(
+                key: const Key('emailField'),
+                controller: _emailController,
+                decoration: const InputDecoration(labelText: 'Email'),
+                validator: (value) =>
+                    value!.isEmpty ? 'Enter email' : null,
+              ),
+              TextFormField(
+                key: const Key('passwordField'),
+                controller: _passwordController,
+                obscureText: true,
+                decoration: const InputDecoration(labelText: 'Password'),
+                validator: (value) =>
+                    value!.length < 6 ? 'Min 6 characters' : null,
+              ),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                key: const Key('registerButton'),
+                onPressed: _register,
+                child: const Text("Register"),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+class LoginForm extends StatefulWidget {
+  final VoidCallback onToggle;
+
+
+  const LoginForm({super.key, required this.onToggle});
+
+
+  @override
+  State<LoginForm> createState() => _LoginFormState();
+}
+
+
+class _LoginFormState extends State<LoginForm> {
+  final _formKey = GlobalKey<FormState>();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+
+  void _login() {
+    if (_formKey.currentState!.validate()) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Login Successful')),
+      );
+    }
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Login'),
+        actions: [
+          TextButton(
+            onPressed: widget.onToggle,
+            child: const Text('Register', style: TextStyle(color: Colors.white)),
+          )
+        ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Form(
+          key: _formKey,
+          child: ListView(
+            children: [
+              TextFormField(
+                key: const Key('loginEmailField'),
+                controller: _emailController,
+                decoration: const InputDecoration(labelText: 'Email'),
+                validator: (value) =>
+                    value!.isEmpty ? 'Enter email' : null,
+              ),
+              TextFormField(
+                key: const Key('loginPasswordField'),
+                controller: _passwordController,
+                obscureText: true,
+                decoration: const InputDecoration(labelText: 'Password'),
+                validator: (value) =>
+                    value!.isEmpty ? 'Enter password' : null,
+              ),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                key: const Key('loginButton'),
+                onPressed: _login,
+                child: const Text("Login"),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+TEST CASES:
+
+
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:your_app/main.dart'; // Replace with your actual package name
+
+
+void main() {
+  group('Authentication Forms Tests', () {
+    testWidgets('Login form validation and success test', (WidgetTester tester) async {
+      await tester.pumpWidget(const MyApp());
+
+
+      // Enter email and password
+      await tester.enterText(find.byKey(const Key('loginEmailField')), 'user@example.com');
+      await tester.enterText(find.byKey(const Key('loginPasswordField')), 'password123');
+
+
+      // Tap Login
+      await tester.tap(find.byKey(const Key('loginButton')));
+      await tester.pump();
+
+
+      // Expect success snackbar
+      expect(find.text('Login Successful'), findsOneWidget);
+    });
+
+
+    testWidgets('Switch to registration and validate empty form', (WidgetTester tester) async {
+      await tester.pumpWidget(const MyApp());
+
+
+      // Tap Register on the top right
+      await tester.tap(find.text('Register'));
+      await tester.pumpAndSettle();
+
+
+      // Tap Register button without entering any data
+      await tester.tap(find.byKey(const Key('registerButton')));
+      await tester.pump();
+
+
+      // Check for all required field errors
+      expect(find.text('Enter full name'), findsOneWidget);
+      expect(find.text('Enter phone number'), findsOneWidget);
+      expect(find.text('Enter email'), findsOneWidget);
+      expect(find.text('Min 6 characters'), findsOneWidget);
+    });
+  });
+}
